@@ -523,6 +523,13 @@ try {
             $('.is-valid').removeClass('is-valid');
             $('.invalid-feedback').remove();
         });
+
+        // Make Bootstrap modals draggable
+        $('.modal').on('shown.bs.modal', function () {
+            $(this).find('.modal-dialog').draggable({
+                handle: '.modal-header'
+            });
+        });
     });
 </script>
 </body>

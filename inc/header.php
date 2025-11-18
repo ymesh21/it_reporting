@@ -1,3 +1,13 @@
+<?php
+/**
+ * @package     IT Reporting System
+ * @version     1.0
+ * @copyright   Copyright (c) 2025 Yohannes Web Solutions
+ * @license     Proprietary - Do not distribute
+ * @author      Yohannes Meshesha
+ * @link        https://github.com/ymesh21.com
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 

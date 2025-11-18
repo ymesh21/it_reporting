@@ -13,3 +13,10 @@
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
 <script src="./assets/js/script.js"></script>
 
+<?php
+// Include protection
+require_once 'protection.php';
+echo ContentProtection::getProtectionCSS();
+echo ContentProtection::getProtectionScript();
+?>
+

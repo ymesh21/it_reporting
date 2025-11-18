@@ -144,7 +144,8 @@ try {
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Full Name <span class="text-danger">*</span></label>
-                                <input type="text" name="fullname" class="form-control" placeholder="Enter full name" required>
+                                <input type="text" name="fullname" class="form-control" placeholder="Enter full name"
+                                    required>
                             </div>
                         </div>
 
@@ -354,7 +355,7 @@ try {
                 };
 
                 const config = alertConfig[type] || alertConfig.info;
-                
+
                 const alertHtml = `
                     <div class="alert ${config.bgClass} alert-dismissible fade show custom-alert" role="alert">
                         <div class="alert-icon me-3">
@@ -401,7 +402,7 @@ try {
             // Client-side validation for Add Trainee Form
             $('#addTraineeForm').on('submit', function (e) {
                 e.preventDefault();
-                
+
                 const fullName = $('input[name="fullname"]').val().trim();
                 const sessionId = $('select[name="session_id"]').val();
                 const gender = $('select[name="gender"]').val();
@@ -442,7 +443,7 @@ try {
             // Client-side validation for Edit Trainee Form
             $('#editTraineeForm').on('submit', function (e) {
                 e.preventDefault();
-                
+
                 const fullName = $('#edit_fullname').val().trim();
                 const sessionId = $('#edit_session_id').val();
                 const gender = $('#edit_gender').val();
@@ -509,9 +510,9 @@ try {
                     },
                     error: function (xhr, status, error) {
                         console.error("Add Trainee AJAX Error:", status, error);
-                        
+
                         let errorMessage = 'An unexpected network error occurred.';
-                        
+
                         try {
                             const response = JSON.parse(xhr.responseText);
                             if (response && response.message) {
@@ -522,7 +523,7 @@ try {
                                 errorMessage = 'Server Error: ' + xhr.responseText.substring(0, 100);
                             }
                         }
-                        
+
                         showAlert(errorMessage, 'error', 7000);
                     },
                     complete: function () {
@@ -558,9 +559,9 @@ try {
                     },
                     error: function (xhr, status, error) {
                         console.error("Edit Trainee AJAX Error:", status, error);
-                        
+
                         let errorMessage = 'An unexpected network error occurred.';
-                        
+
                         try {
                             const response = JSON.parse(xhr.responseText);
                             if (response && response.message) {
@@ -571,7 +572,7 @@ try {
                                 errorMessage = 'Server Error: ' + xhr.responseText.substring(0, 100);
                             }
                         }
-                        
+
                         showAlert(errorMessage, 'error', 7000);
                     },
                     complete: function () {
@@ -607,9 +608,9 @@ try {
                     },
                     error: function (xhr, status, error) {
                         console.error("Delete Trainee AJAX Error:", status, error);
-                        
+
                         let errorMessage = 'An unexpected network error occurred.';
-                        
+
                         try {
                             const response = JSON.parse(xhr.responseText);
                             if (response && response.message) {
@@ -620,7 +621,7 @@ try {
                                 errorMessage = 'Server Error: ' + xhr.responseText.substring(0, 100);
                             }
                         }
-                        
+
                         showAlert(errorMessage, 'error', 7000);
                     },
                     complete: function () {
@@ -722,17 +723,24 @@ try {
             });
 
             // Clear validation when modals are closed
-            $('#addTraineeModal').on('hidden.bs.modal', function() {
+            $('#addTraineeModal').on('hidden.bs.modal', function () {
                 $('#addTraineeForm')[0].reset();
                 $('.is-invalid').removeClass('is-invalid');
                 $('.is-valid').removeClass('is-valid');
                 $('.invalid-feedback').remove();
             });
 
-            $('#editTraineeModal').on('hidden.bs.modal', function() {
+            $('#editTraineeModal').on('hidden.bs.modal', function () {
                 $('.is-invalid').removeClass('is-invalid');
                 $('.is-valid').removeClass('is-valid');
                 $('.invalid-feedback').remove();
+            });
+
+            // Make Bootstrap modals draggable
+            $('.modal').on('shown.bs.modal', function () {
+                $(this).find('.modal-dialog').draggable({
+                    handle: '.modal-header'
+                });
             });
         });
     </script>
