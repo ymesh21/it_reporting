@@ -1,0 +1,142 @@
+@import "../boostrap/css/bootstrap.min.css";
+
+:root {
+    --sidebar-width: 15rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.form-control,
+.input-group-text {
+    border-radius: 0;
+}
+
+#wrapper {
+    display: flex;
+}
+
+/* ============= */
+/* Sidebar */
+/* ============ */
+/* ============= */
+/* Sidebar FIX */
+/* ============ */
+#sidebar {
+    height: 100vh;
+    min-width: var(--sidebar-width);
+    transition: all 0.25s ease-out;
+    width: var(--sidebar-width);
+    position: fixed;
+}
+
+/* When sidebar has the expanded class, collapse it */
+#sidebar.collapsed {
+    /* Use the variable for a clean collapse */
+    margin-left: calc(-1 * var(--sidebar-width));
+}
+
+/* ============= */
+/* Main Content FIX */
+/* ============ */
+#main {
+    /* Default State (Sidebar is OPEN): Main content is offset and sized */
+    margin-left: var(--sidebar-width);
+    width: calc(100vw - var(--sidebar-width));
+    transition: all 0.25s ease-out;
+}
+
+/* When sidebar has the expanded class (collapsed), main content expands */
+#sidebar.collapsed~#main {
+    margin-left: 0;
+    width: 100vw;
+}
+
+.dropdown-menu,
+.dropdown {
+    border-radius: 0;
+}
+
+/* Custom Alert Styles */
+.custom-alert {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border: none;
+    border-left: 4px solid;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    animation: slideInDown 0.3s ease-out;
+}
+
+.alert-success {
+    border-left-color: #198754 !important;
+    background: linear-gradient(135deg, #d1f2eb, #e8f6f3) !important;
+}
+
+.alert-danger {
+    border-left-color: #dc3545 !important;
+    background: linear-gradient(135deg, #fadbd8, #fdebd0) !important;
+}
+
+.alert-warning {
+    border-left-color: #ffc107 !important;
+    background: linear-gradient(135deg, #fdebd0, #fcf3cf) !important;
+}
+
+.alert-info {
+    border-left-color: #0dcaf0 !important;
+    background: linear-gradient(135deg, #d1f2eb, #d6eaf8) !important;
+}
+
+.alert-icon {
+    font-size: 1.5rem;
+}
+
+.alert-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.alert-message {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+/* Animation */
+@keyframes slideInDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Toast specific styles */
+.custom-toast {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.custom-toast .toast-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}

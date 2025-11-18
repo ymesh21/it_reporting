@@ -18,7 +18,7 @@ CREATE TABLE users (
     firstname VARCHAR(100) NOT NULL,
     lastname VARCHAR(100) NOT NULL,
     sex ENUM('Male', 'Female') NOT NULL,
-    woreda_id INT NOT NULL, -- FK
+    district_id INT NOT NULL, -- FK
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     phone VARCHAR(20),
@@ -27,19 +27,19 @@ CREATE TABLE users (
     remember_token VARCHAR(100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (woreda_id) REFERENCES woredas(id) ON DELETE RESTRICT
+    FOREIGN KEY (district_id) REFERENCES woredas(id) ON DELETE RESTRICT
 );
 
 CREATE TABLE training_sessions (
     id INT PRIMARY KEY AUTO_INCREMENT, -- PK
-    woreda_id INT NOT NULL, -- FK
+    district_id INT NOT NULL, -- FK
     category_id INT NOT NULL, -- FK
     title VARCHAR(255) NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     created_by INT NOT NULL, -- FK (User who created the session)
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (woreda_id) REFERENCES woredas(id) ON DELETE RESTRICT,
+    FOREIGN KEY (district_id) REFERENCES woredas(id) ON DELETE RESTRICT,
     FOREIGN KEY (category_id) REFERENCES training_categories(id) ON DELETE RESTRICT,
     FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE RESTRICT
 );
